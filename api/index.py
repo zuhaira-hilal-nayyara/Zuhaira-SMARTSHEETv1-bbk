@@ -139,8 +139,7 @@ def home():
     artikel = config_artikel.get_articles(page=page)
     data = {
         'title': f'Informasi Berita Halaman {page}' if page > 1 else 'Informasi Berita',
-        'metadeskripsi': 'Puing Berita terpercaya dengan informasi terkini dan akurat. Temukan berita terbaru seputar politik, ekonomi, '\
-            'teknologi, dan olahraga. Update setiap hari dengan konten berkualitas.'
+        'metadeskripsi': 'Smartsheet membangun Website Otomatis dengan Pemanfaatan AI & Google Spreadsheet.'
     }
     return render_template('home.html', artikel=artikel, title=data['title'], metadeskripsi=data['metadeskripsi'])
 
@@ -161,7 +160,7 @@ def cataogory(category):
     artikel = config_artikel.get_articles_by_category(category, page=page)
     data = {
         'title': f'Kategori: {category.capitalize()}',
-        'metadeskripsi': f'Puing Berita terpercaya dengan informasi terkini dan akurat dalam kategori {category}. Temukan berita terbaru seputar {category} dan topik lainnya. Update setiap hari dengan konten berkualitas.'
+        'metadeskripsi': f'Smartsheet membangun Website Otomatis dengan Pemanfaatan AI & Google Spreadsheet.'
     }
     return render_template('category.html', artikel=artikel, title=data['title'], metadeskripsi=data['metadeskripsi'])
 
