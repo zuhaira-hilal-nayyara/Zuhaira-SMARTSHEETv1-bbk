@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}{{ artikel.payload.title|title }}{% endblock %}
+
+{% block content %}
+ <!-- Article Content -->
+ <div class="col-lg-8">
+    <article class="blog-post">
+        <img src="{{artikel.payload.image}}" class="img-fluid mb-4" alt="Article Image" style="width: 100%; height: 400px; object-fit: cover;">
+        <h1 class="blog-post-title mb-3">{{ artikel.payload.title|title }}</h1>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <span class="text-muted"><i class="far fa-clock"></i> 26 April 2024, 15:30 WIB</span>
+                {% if artikel.payload.category %}
+                    {% for cat in artikel.payload.category.split(',') %}
+                    <a href="/category/{{ cat.strip() }}"><span class="badge bg-primary ms-2">{{ cat.strip() }}</span></a>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="share-buttons">
+                <button class="btn btn-sm btn-outline-secondary" onclick="shareArticle('facebook','{{ artikel.payload.title|title }}')">
+                    <i class="fab fa-facebook"></i>
+                </button>
+                <button class="btn btn-sm btn-outline-info" onclick="shareArticle('twitter','{{ artikel.payload.title|title }}')">
+                    <i class="fab fa-twitter"></i>
+                </button>
+                <button class="btn btn-sm btn-outline-danger" onclick="shareArticle('whatsapp', '{{ artikel.payload.title|title }}')">
+                    <i class="fab fa-whatsapp"></i>
+                </button>
+            </div>
+        </div>
+        <div class="blog-post-content">
+            {{ artikel.payload.content | safe }}
+        </div>
+
+        <!-- Related Articles -->
+        <!-- <div class="related-articles mt-5">
+            <h3>Artikel Terkait</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="Related Article">
+                        <div class="card-body">
+                            <h5 class="card-title">Judul Artikel Terkait 1</h5>
+                            <a href="#" class="btn btn-outline-primary">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="Related Article">
+                        <div class="card-body">
+                            <h5 class="card-title">Judul Artikel Terkait 2</h5>
+                            <a href="#" class="btn btn-outline-primary">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </article>
+</div>
+{% endblock %}  

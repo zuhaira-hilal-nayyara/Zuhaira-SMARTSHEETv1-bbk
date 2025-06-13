@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+<!-- Main Content Area -->
+<div class="col-lg-8">
+    <!-- Category Header -->
+    <div class="category-header mb-4">
+        <h1 class="mb-3">{{title}}</h1>
+    </div>
+
+    <!-- News List -->
+    <div class="row">
+        {% for item in artikel.payload.artikel %}
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <img src="{{ item.image }}" class="card-img-top" alt="News" style="width: 100%; height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <small class="text-muted"><i class="far fa-clock"></i> {{ item.date.split('00:00:00 GMT')[0] }}</small>
+                        <span class="badge bg-primary">{{ item.category }}</span>
+                    </div>
+                    <h5 class="card-title">{{ item.title }}</h5>
+                    <p class="card-text">{{ item.description }}</p>
+                    <a href="/artikel/{{ item.slug }}" class="btn btn-outline-primary">Baca Selengkapnya</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    {% if artikel.payload.artikel|length > 0 %}
+    <nav aria-label="Page navigation" class="mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <small class="text-muted">Halaman {{ artikel.payload.pagination.halaman_sekarang }} dari {{
+                artikel.payload.pagination.total_halaman }}</small>
+            <small class="text-muted">Total Artikel: {{artikel.payload.pagination.total_artikel}}</small>
+        </div>
+        <ul class="pagination justify-content-center">
+        
+            {% set current_page = artikel.payload.pagination.halaman_sekarang %}
+            {% set total_pages = artikel.payload.pagination.total_halaman %}
+
+            {% if current_page > 2 %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1">First</a>
+            </li>
+            <li class="page-item disabled">
+                <span class="page-link">...</span>
+            </li>
+            {% endif %}
+
+            {% set start_page = [1, current_page - 1]|sort|last %}
+            {% set end_page = [total_pages + 1, current_page + 2]|sort|first %}
+
+            {% for page in range(start_page, end_page) %}
+            <li class="page-item {% if page == current_page %}active{% endif %}">
+                <a class="page-link {% if page == current_page %}bg-primary text-white{% endif %}"
+                    href="?page={{ page }}">{{ page }}</a>
+            </li>
+            {% endfor %}
+
+            {% if current_page < total_pages - 1 %} <li class="page-item disabled">
+                <span class="page-link">...</span>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ total_pages }}">End</a>
+                </li>
+                {% endif %}
+
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+{% endblock %}
