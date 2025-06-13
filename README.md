@@ -1,10 +1,6 @@
-# Puingberita
+# Smartsheet
 > Minimalist blog powered by Flask + Google Spreadsheet  
-> 📺 **Demo Video & Installation** [Watch on YouTube](https://www.youtube.com/watch?v=4qbDS9GEoF8)
-
-[![Demo Video](https://img.youtube.com/vi/4qbDS9GEoF8/0.jpg)](https://www.youtube.com/watch?v=4qbDS9GEoF8)
-
-Puingberita is simple blog build from Flask + Google Spreadsheet. This project support deploy using Vercel.
+Smartsheet is simple blog build from Flask + Google Spreadsheet. This project support deploy using Vercel.
 
 ## How it Works
 
