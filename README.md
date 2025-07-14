@@ -31,7 +31,7 @@ config_artikel.gid('your-google-spreadsheet-gid')
 ```
 
 ### Spreadsheet Template
-Make sure your spreadsheet follows this template: [here](https://docs.google.com/spreadsheets/d/17-WZdi-S27wCUdxuAtvR3j2564WIbx9Nwz45EbmxCyM/edit?gid=71052)
+Make sure your spreadsheet follows this template: [here](https://docs.google.com/spreadsheets/d/14EXDQFZ3w3m20W1w3EBl0MGCO9hxNz63ZWhC4tQewYY/edit?gid=710523043#gid=710523043)
 
 ## One-Click Deploy
 
